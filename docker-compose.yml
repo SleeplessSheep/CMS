@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  apache:
+    image: php:8.1-apache  # Use PHP 8.1 instead of PHP 7.4
+    container_name: CMS_apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - lamp_network
+
+  mysql:
+    image: mysql:8.0   # Use MySQL 8.0 (latest stable)
+    container_name: CMS_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Sleepless52@
+      MYSQL_DATABASE: CMS_DB
+      MYSQL_USER: sheep
+      MYSQL_PASSWORD: Sleepy52@
+    ports:
+      - "3306:3306"
+    networks:
+      - lamp_network
+
+networks:
+  lamp_network:
+    driver: bridge
