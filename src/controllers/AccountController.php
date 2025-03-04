@@ -33,5 +33,18 @@ class AccountController {
             header("Location: /login.php");
         }
     }
+
+    public function checkEmail() {
+        require_once '../src/model/User.php';
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
+            $email = trim($_POST['email']);
+            $userModel = new User();
+            $exists = $userModel->emailExists($email);
+    
+            echo json_encode(["exists" => $exists]);
+        }
+    }
+    
 }
 ?>

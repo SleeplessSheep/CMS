@@ -1,14 +1,29 @@
 <?php
-require_once '../app/controllers/AccountController.php';
+require_once '../src/controller/AccountController.php';
 
 $accountController = new AccountController();
 
-if ($_SERVER['REQUEST_URI'] === '/login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $accountController->login();
-} elseif ($_SERVER['REQUEST_URI'] === '/register' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $accountController->register();
-} else {
-    http_response_code(404);
-    echo "Not Found";
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$method = $_SERVER['REQUEST_METHOD'];
+
+switch ($uri) {
+    case '/api/login':
+        if ($method === 'POST') {
+            $accountController->login();
+        }
+        break;
+    case '/api/register':
+        if ($method === 'POST') {
+            $accountController->register();
+        }
+        break;
+    case '/api/check-email':  // ✅ New endpoint for checking email
+        if ($method === 'POST') {
+            $accountController->checkEmail();
+        }
+        break;
+    default:
+        http_response_code(404);
+        echo json_encode(["error" => "Route not found"]);
 }
 ?>

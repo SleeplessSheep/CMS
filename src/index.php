@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/src/view/layouts/header.php';
+include 'views/layouts/header.php';
 
-require_once __DIR__ . '/src/model/Post.php';
+//require_once 'models/Post.php';
 
 $pdo = new PDO("mysql:host=localhost;dbname=CMS_DB", "root", "password");
 $stmt = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC");
@@ -9,7 +9,6 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h1>Recent Posts</h1>
-echo __DIR__;
 
 
 <?php
@@ -22,4 +21,4 @@ foreach ($posts as $post) {
 }
 ?>
 
-<?php include __DIR__ . '/src/view/layouts/footer.php'; ?>
+<?php include 'views/layouts/footer.php'; ?>

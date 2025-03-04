@@ -1,8 +1,10 @@
 <?php include 'layouts/header.php'; ?>
+<script src="/src/views/js/password.js"></script>
 <h2>Login</h2>
 <form action="/api/login" method="POST">
-    <input type="email" name="email" placeholder="Email" required><br>
-    <input type="password" name="password" placeholder="Password" required><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="button" id="togglePassword">👁️</button>
     <button type="submit">Login</button>
 </form>
 <p>Don't have an account? <a href="/register.php">Register here</a></p>
