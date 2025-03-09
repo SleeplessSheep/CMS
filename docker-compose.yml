@@ -8,6 +8,7 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
+      - ./public:/var/www/html/public
     networks:
       - lamp_network
 

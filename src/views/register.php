@@ -1,6 +1,6 @@
 <?php include 'layouts/header.php'; ?>
-<script src="/src/views/js/password.js"></script>
-<script src="/src/views/js/register.js"></script>
+<script type="text/javascript" src="/public/js/password.js"></script>
+<script type="text/javascript" src="/public/js/register.js"></script>
 
 <h2>Account Register</h2>
 

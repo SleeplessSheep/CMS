@@ -1,5 +1,5 @@
 <?php include 'layouts/header.php'; ?>
-<script src="/src/views/js/password.js"></script>
+<script src="/public/js/password.js"></script>
 <h2>Login</h2>
 <form action="/api/login" method="POST">
     <label for="password">Password:</label>
