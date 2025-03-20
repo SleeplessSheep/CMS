@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    container_name: cms_springboot
+    image: cmsapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/cms_db
+      SPRING_DATASOURCE_USERNAME: cms_user
+      SPRING_DATASOURCE_PASSWORD: cms_password
+
+  mysql:
+    image: mysql:8.0
+    container_name: cms_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: cms_db
+      MYSQL_USER: cms_user
+      MYSQL_PASSWORD: cms_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
