@@ -1,2 +1,2 @@
 # CMS
-Content Management System (LAMP)
+Content Management System (Sprint Boot)
