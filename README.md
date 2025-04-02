@@ -11,4 +11,7 @@ docker:
 up:
 	docker-compose up -d
 
-all: build docker up
+all: build docker up 
+
+test: 
+
