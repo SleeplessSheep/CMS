@@ -26,5 +26,17 @@ services:
       - db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: cms_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    depends_on:
+      - mysql
+
 volumes:
   db_data:
